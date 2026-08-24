@@ -1,0 +1,71 @@
+/* ============================================================
+   LANA RHOADES — Adaptación responsive
+   ============================================================ */
+
+/* Tablet: hasta 960px */
+@media (max-width: 960px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-credit { grid-column: 1 / -1; text-align: left; }
+  .bio-figure { order: -1; }
+}
+
+/* Navegación: hasta 880px */
+@media (max-width: 880px) {
+  .nav-toggle { display: flex; }
+  .nav-links {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--noche-2);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .nav-links.open { max-height: 480px; }
+  .nav-links li { border-top: 1px solid color-mix(in srgb, var(--papel) 10%, transparent); }
+  .nav-links a {
+    display: block;
+    padding: 1rem clamp(1rem, 4vw, 2rem);
+  }
+  .nav-links a::after { display: none; }
+}
+
+/* Móvil: hasta 640px */
+@media (max-width: 640px) {
+  .news-grid { grid-template-columns: 1fr; }
+  .quiz-options { grid-template-columns: repeat(2, 1fr); }
+  .chat-window {
+    right: 0.75rem;
+    bottom: 4.9rem;
+    width: calc(100vw - 1.5rem);
+  }
+  .hero-stats { grid-template-columns: 1fr; gap: 1.25rem; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* Móvil pequeño: hasta 400px */
+@media (max-width: 400px) {
+  .cards-grid { grid-template-columns: 1fr; }
+  .timeline { padding-left: 1.5rem; }
+  .timeline-item::before { left: calc(-1.5rem - 7px); width: 12px; height: 12px; }
+  .game-board { padding: 1rem; }
+  .quiz-options { grid-template-columns: 1fr; }
+  .hero-actions .btn { width: 100%; text-align: center; }
+  .chat-window { height: min(480px, calc(100vh - 6rem)); }
+}
+
+/* Accesibilidad: usuarios que prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  #butterflies { display: none; }
+}
